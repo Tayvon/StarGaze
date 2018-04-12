@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<title>Star Gaze</title>
+		<link rel='stylesheet' type='text/css' href='resources/css/reset.css'>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/pstyle.css" />
+	</head>
+	<body class="cbp-spmenu-push">
+		<!-- Navigation -->
+	    <nav class="navbar navbar-default navbar-fixed-top">
+	      <div class="container-fluid">
+	        <ul class="nav navbar-nav">
+	          <li class="active"><a href="#">Explore</a></li>
+	          <li><a href="#">Join</a></li>
+	          <li><a href="#">About us</a></li>
+	        </ul>
+	        <!-- Possible Logo??? -->
+	      </div>
+	    </nav>
+
+
+		<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<h3>Login Here!</h3>
+            <FORM method='POST' action="login.php" id="log">
+             		<span class="input input--ruri">
+					<input class="input__field input__field--ruri" type="text" name = "username" id="input-26" />
+					<label class="input__label input__label--ruri" for="input-26">
+						<span class="input__label-content input__label-content--ruri">Username</span>
+					</label>
+				</span>
+				<span class="input input--ruri">
+					<input class="input__field input__field--ruri" type="password" name ="password" id="input-27" />
+					<label class="input__label input__label--ruri" for="input-27">
+						<span class="input__label-content input__label-content--ruri">Password</span>
+					</label>
+				</span>
+           	</FORM>
+           	<p class="red"><a href="forgetPass.html">Forgot Password</a></p>
+
+           	<button type="submit" form="log">Login</button>
+		</div>
+		<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+			<div class="register">
+          		<h3>Register Here!</h3>
+          			<form method="POST" action="addUser.php" id="reg">
+          				<span class="input input--ruri">
+							<input class="input__field input__field--ruri" type="text" id="input-1" name="fname"/>
+							<label class="input__label input__label--ruri" for="input-1">
+								<span class="input__label-content input__label-content--ruri">First Name</span>
+							</label>
+          				</span>
+          				<span class="input input--ruri">
+							<input class="input__field input__field--ruri" type="text" id="input-2" name="lname"/>
+							<label class="input__label input__label--ruri" for="input-2">
+								<span class="input__label-content input__label-content--ruri">Last Name</span>
+							</label>
+          				</span>
+          				<span class="input input--ruri">
+							<input class="input__field input__field--ruri" type="text" id="input-3" name="username"/>
+							<label class="input__label input__label--ruri" for="input-3">
+								<span class="input__label-content input__label-content--ruri">Username</span>
+							</label>
+          				</span>
+          				<span class="input input--ruri">
+							<input class="input__field input__field--ruri" type="text" id="input-4" name="uEmail"/>
+							<label class="input__label input__label--ruri" for="input-4">
+								<span class="input__label-content input__label-content--ruri">Email Name</span>
+							</label>
+          				</span>
+          				<span class="input input--ruri">
+							<input class="input__field input__field--ruri" type="password" id="input-5" name="password"/>
+							<label class="input__label input__label--ruri" for="input-5">
+								<span class="input__label-content input__label-content--ruri">Password</span>
+							</label>
+          				</span>
+						<br>
+              			<br>
+          			</form>
+
+          			
+          			<button type="submit" form="reg">Register</button>
+          			
+        		</div>
+		</div>
+		<div class="container">
+
+			<div class="main">
+				<section class="buttonset">
+					<h2>Login / Register</h2>
+					<!-- Class "cbp-spmenu-open" gets applied to menu and "cbp-spmenu-push-toleft" or "cbp-spmenu-push-toright" to the body -->
+					<button id="showLeftPush">Login</button>
+					<button id="showRightPush">Register</button>
+				</section>
+			</div>
+		</div>
+
+		
+
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<script src="js/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				showRightPush = document.getElementById( 'showRightPush' ),
+				body = document.body;
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+			showRightPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toleft' );
+				classie.toggle( menuRight, 'cbp-spmenu-open' );
+				disableOther( 'showRightPush' );
+			};
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+				if( button !== 'showRightPush' ) {
+					classie.toggle( showRightPush, 'disabled' );
+				}
+			}
+		</script>
+		<script>
+			(function() {
+				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+				if (!String.prototype.trim) {
+					(function() {
+						// Make sure we trim BOM and NBSP
+						var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+						String.prototype.trim = function() {
+							return this.replace(rtrim, '');
+						};
+					})();
+				}
+				[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+					// in case the input is already filled..
+					if( inputEl.value.trim() !== '' ) {
+						classie.add( inputEl.parentNode, 'input--filled' );
+					}
+					// events:
+					inputEl.addEventListener( 'focus', onInputFocus );
+					inputEl.addEventListener( 'blur', onInputBlur );
+				} );
+				function onInputFocus( ev ) {
+					classie.add( ev.target.parentNode, 'input--filled' );
+				}
+				function onInputBlur( ev ) {
+					if( ev.target.value.trim() === '' ) {
+						classie.remove( ev.target.parentNode, 'input--filled' );
+					}
+				}
+			})();
+
+				$(document).ready(function(){
+				  $('.carousel').slick({
+				    slidesToScroll: 1,
+				    autoplay: true,
+				    autoplaySpeed: 2000,
+				    arrows: false,
+				    draggable: false,
+				    pauseOnFocus: false,
+				    pauseOnHover: false
+				  });
+
+				  var lastScrollTop = 0;
+				  $(window).scroll(function(){
+				    var scrollTop = $(this).scrollTop();
+				    if (scrollTop - lastScrollTop > 50){
+				      var navHeight = $('.navbar').css('height');
+				      $('.navbar').animate({top: '-' + navHeight}, 150);
+				      lastScrollTop = scrollTop;
+				    } else if (lastScrollTop - scrollTop > 50) {
+				      $('.navbar').animate({top: '0px'}, 150);
+				      lastScrollTop = scrollTop;
+				    }
+				  });
+				});
+
+		</script>
+
+		<!-- Footer -->
+
+	    <footer>
+	      <div class="container">
+	       Copyright StarMap: TW-SZ-JM
+	      </div>
+	    </footer>
+	</body>
+</html>
